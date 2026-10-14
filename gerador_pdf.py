@@ -35,9 +35,9 @@ def criar_pdf_apr(os_num, local, sensores, riscos, colaborador, data_apr, histor
     
     elementos = []
     estilos = getSampleStyleSheet()
-    estilo_titulo = ParagraphStyle('Titulo', parent=estilos['Title'], textColor=colors.HexColor("#000080"), fontSize=16)
+    # Título alterado para cor preta
+    estilo_titulo = ParagraphStyle('Titulo', parent=estilos['Title'], textColor=colors.black, fontSize=16)
     
-    # Estilo miniatura para caber na tabela de 14 colunas
     estilo_tabela_txt = ParagraphStyle('TabTxt', parent=estilos['Normal'], fontSize=7, leading=8, alignment=4)
     estilo_bold = ParagraphStyle('Bold', parent=estilos['Normal'], fontName='Helvetica-Bold')
 
@@ -88,7 +88,7 @@ def criar_pdf_apr(os_num, local, sensores, riscos, colaborador, data_apr, histor
     elementos.append(tabela_rev)
     elementos.append(PageBreak())
 
-    # --- TABELA DE 14 COLUNAS (FORMATO IMAGEM) ---
+    # --- TABELA DE 14 COLUNAS ---
     cabecalho_linha1 = [
         "Nº", "Disciplina", 
         "Identificação dos Riscos", "", "", 
@@ -133,20 +133,12 @@ def criar_pdf_apr(os_num, local, sensores, riscos, colaborador, data_apr, histor
         ]
         dados_tabela_riscos.append(linha)
 
-    # Larguras otimizadas para 800 pontos (A4 Paisagem com margem 20)
     larguras = [20, 35, 75, 100, 85, 20, 25, 25, 160, 60, 60, 20, 25, 25]
     tabela_riscos = Table(dados_tabela_riscos, colWidths=larguras, repeatRows=2)
     
     estilo_tabela_riscos = TableStyle([
-        # Mesclagem Linha 1 (SPAN)
-        ('SPAN', (0,0), (0,1)), # Nº Risco
-        ('SPAN', (1,0), (1,1)), # Disciplina
-        ('SPAN', (2,0), (4,0)), # Identificação
-        ('SPAN', (5,0), (7,0)), # Nivel Inicial
-        ('SPAN', (8,0), (10,0)), # Mitigação
-        ('SPAN', (11,0), (13,0)), # Nivel Residual
-        
-        # Cores Cabeçalho
+        ('SPAN', (0,0), (0,1)), ('SPAN', (1,0), (1,1)), ('SPAN', (2,0), (4,0)), 
+        ('SPAN', (5,0), (7,0)), ('SPAN', (8,0), (10,0)), ('SPAN', (11,0), (13,0)), 
         ('BACKGROUND', (0, 0), (-1, 1), colors.HexColor("#000080")), 
         ('TEXTCOLOR', (0, 0), (-1, 1), colors.white),
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
@@ -158,7 +150,6 @@ def criar_pdf_apr(os_num, local, sensores, riscos, colaborador, data_apr, histor
         ('TOPPADDING', (0,0), (-1,-1), 2),
     ])
     
-    # Colorir células de Nível Inicial (coluna 7) e Residual (coluna 13) dinamicamente
     for i in range(2, len(dados_tabela_riscos)):
         estilo_tabela_riscos.add('BACKGROUND', (7, i), (7, i), get_cor_risco(dados_tabela_riscos[i][7]))
         estilo_tabela_riscos.add('BACKGROUND', (13, i), (13, i), get_cor_risco(dados_tabela_riscos[i][13]))
