@@ -30,7 +30,6 @@ with col_logo:
     else:
         st.markdown("### 4SAS")
 
-st.sidebar.markdown("<p style='text-align: center; color: #2E8B57; font-style: italic; font-size: 14px;'>Precisão além da superfície</p>", unsafe_allow_html=True)
 st.sidebar.divider()
 
 st.sidebar.header("1. Detalhes da Campanha")
