@@ -7,7 +7,7 @@ riscos_definitivos = [
     {
         "id": "1.1", "categoria_fase": "1 - Preparação e Onshore",
         "tarefa": "Testes de Bancada, Documentação e Integração",
-        "perigo": "Risco de Acidente / Elétrico (NR-10): Manuseamento de equipamentos ligados à corrente, documentação de equipa incompleta ou sem treino.",
+        "perigo": "Risco de Acidente / Elétrico (NR-10): Manuseamento de equipamentos ligados à corrente, documentação da equipe incompleta ou sem treino.",
         "consequencias": "Choque elétrico, queima de placas de sensores de alto valor, impedimento de embarque por falta de NRs/ASO.",
         "risco_inicial": {"severidade": 4, "probabilidade": 3, "nivel": 12},
         "mitigacao": {"medidas_padrao": "Auditoria de documentação (ASO, NRs, CBSP). Uso de bancadas aterradas. Revisão visual de cabos e conectores submarinos.", "controle_adicional": "N/A", "responsavel": "Diretor Técnico / RH"},
@@ -18,9 +18,9 @@ riscos_definitivos = [
         "id": "1.2", "categoria_fase": "1 - Preparação e Onshore",
         "tarefa": "Logística Base e Movimentação Manual",
         "perigo": "Risco Ergonômico (NR-17): Movimentação manual e elevação de cases pesados, baterias e falha no transporte rodoviário.",
-        "consequencias": "Lesões musculoesqueléticas, lombalgia, acidentes de viação durante deslocamento para o porto.",
+        "consequencias": "Lesões musculoesqueléticas, lombalgia, acidentes de trânsito durante deslocamento para o porto.",
         "risco_inicial": {"severidade": 3, "probabilidade": 4, "nivel": 12},
-        "mitigacao": {"medidas_padrao": "Uso de carrinhos de carga. Limite prático de elevação de 25kg por pessoa. Viaturas homologadas e motoristas com descanso garantido.", "controle_adicional": "N/A", "responsavel": "Logística"},
+        "mitigacao": {"medidas_padrao": "Uso de carrinhos de carga. Limite prático de elevação de 25kg por pessoa. Veículos homologados e motoristas com descanso garantido.", "controle_adicional": "N/A", "responsavel": "Logística"},
         "risco_residual": {"severidade": 2, "probabilidade": 2, "nivel": 4},
         "sensores_aplicaveis": ["Geral"]
     },
@@ -143,12 +143,26 @@ riscos_definitivos = [
     {
         "id": "4.1", "categoria_fase": "4 - Desmobilização",
         "tarefa": "Encerramento e Logística Reversa",
-        "perigo": "Risco Humano/Fadiga: Desmobilizar apressadamente equipamentos pesados. Perda de concentração devido à 'febre de ir para casa'.",
-        "consequencias": "Acidentes de trabalho no último dia (cortes, prensamentos), acidentes de viação no regresso terrestre.",
+        "perigo": "Risco Humano/Fadiga: Desmobilizar apressadamente equipamentos pesados. Perda de concentração devido à pressa no retorno.",
+        "consequencias": "Acidentes de trabalho no último dia (cortes, prensamentos), acidentes de trânsito no retorno terrestre.",
         "risco_inicial": {"severidade": 4, "probabilidade": 4, "nivel": 16},
-        "mitigacao": {"medidas_padrao": "Toolbox Talk focada no não relaxamento. Manutenção dos PTWs de içamento. Descanso obrigatório (12h) antes de conduzir viaturas de regresso.", "controle_adicional": "N/A", "responsavel": "Gerente de Operações / RH"},
+        "mitigacao": {"medidas_padrao": "Toolbox Talk focada no não relaxamento. Manutenção dos PTWs de içamento. Descanso obrigatório (12h) antes de dirigir veículos de retorno.", "controle_adicional": "N/A", "responsavel": "Gerente de Operações / RH"},
         "risco_residual": {"severidade": 3, "probabilidade": 1, "nivel": 3},
         "sensores_aplicaveis": ["Geral"]
     },
     {
         "id": "4.2", "categoria_fase": "4 - Desmobilização",
+        "tarefa": "Desinstalação e Transporte",
+        "perigo": "Risco Operacional: Acondicionamento incorreto de sensores ainda molhados ou com sal. Desconexão brusca de cabos.",
+        "consequencias": "Corrosão acelerada, pinos partidos, fibra ótica rompida, inutilizando o ativo.",
+        "risco_inicial": {"severidade": 3, "probabilidade": 4, "nivel": 12},
+        "mitigacao": {"medidas_padrao": "Lavagem com água doce. Secagem e aplicação de protetivo (WD-40) nos conectores. Uso de tampas de proteção mecânica.", "controle_adicional": "N/A", "responsavel": "Logística / Gerente de Operações"},
+        "risco_residual": {"severidade": 2, "probabilidade": 1, "nivel": 2},
+        "sensores_aplicaveis": ["Geral"]
+    }
+]
+
+with open('riscos_db_clean.json', 'w', encoding='utf-8') as f:
+    json.dump(riscos_definitivos, f, ensure_ascii=False, indent=4)
+    
+print("Banco de Dados Atualizado: Português BR aplicado e Controle Adicional dinâmico integrado!")
