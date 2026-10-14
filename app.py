@@ -70,7 +70,7 @@ st.title("Análise Preliminar de Risco (APR)")
 if os_num and local and colaborador and selecao_sensores:
     st.success(f"**Gestão Ativa:** {colaborador} | **OS:** {os_num} | **Local:** {local}")
     
-    st.markdown("### Seleção e Exclusão de Riscos Mapeados")
+    st.markdown("### Seleção e Controle Adicional de Riscos")
     riscos_selecionados_para_pdf = []
     
     st.subheader("🌐 Riscos Gerais (Aplicáveis a toda a operação)")
@@ -80,7 +80,12 @@ if os_num and local and colaborador and selecao_sensores:
             for risco in [r for r in riscos_gerais if r['categoria_fase'] == fase]:
                 incluir = st.checkbox(f"**{risco['id']} - {risco['tarefa']}** (Nível Inicial {risco['risco_inicial']['nivel']})", value=True, key=f"chk_geral_{risco['id']}")
                 if incluir:
-                    riscos_selecionados_para_pdf.append(risco)
+                    # Campo dinâmico para preencher o Controle Adicional
+                    controle_adicional = st.text_input("Controle Adicional (opcional):", value="N/A", key=f"ctrl_geral_{risco['id']}")
+                    r_final = copy.deepcopy(risco)
+                    r_final['mitigacao']['controle_adicional'] = controle_adicional
+                    riscos_selecionados_para_pdf.append(r_final)
+                    st.caption(f"**Perigo:** {risco['perigo']} | **Mitigação:** {risco['mitigacao']['medidas_padrao']}")
 
     if riscos_especificos:
         st.subheader("⚙️ Riscos Específicos por Equipamento")
@@ -90,7 +95,12 @@ if os_num and local and colaborador and selecao_sensores:
                     for risco in riscos_especificos[sensor]:
                         incluir = st.checkbox(f"**{risco['id']} - {risco['tarefa']}** (Nível Inicial {risco['risco_inicial']['nivel']})", value=True, key=f"chk_esp_{risco['id_unique']}")
                         if incluir:
-                            riscos_selecionados_para_pdf.append(risco)
+                            # Campo dinâmico para preencher o Controle Adicional
+                            controle_adicional = st.text_input("Controle Adicional (opcional):", value="N/A", key=f"ctrl_esp_{risco['id_unique']}")
+                            r_final = copy.deepcopy(risco)
+                            r_final['mitigacao']['controle_adicional'] = controle_adicional
+                            riscos_selecionados_para_pdf.append(r_final)
+                            st.caption(f"**Perigo:** {risco['perigo']} | **Mitigação:** {risco['mitigacao']['medidas_padrao']}")
 
     st.divider()
 
