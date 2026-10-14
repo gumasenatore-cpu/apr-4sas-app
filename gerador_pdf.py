@@ -18,17 +18,16 @@ def criar_pdf_apr(os_num, local, sensores, riscos, colaborador, data_apr, histor
 
     nome_arquivo = f"OS-{os_num}-APR-Rev{rev_atual}.pdf"
     
-    doc = BaseDocTemplate(nome_arquivo, pagesize=landscape(A4), rightMargin=30, leftMargin=30, topMargin=30, bottomMargin=40)
+    doc = BaseDocTemplate(nome_arquivo, pagesize=landscape(A4), rightMargin=20, leftMargin=20, topMargin=25, bottomMargin=35)
     frame = Frame(doc.leftMargin, doc.bottomMargin, doc.width, doc.height, id='normal')
     
     def rodape(canvas, doc):
         canvas.saveState()
         canvas.setFont('Helvetica', 8)
         canvas.setFillColor(colors.dimgrey)
-        canvas.drawString(30, 20, nome_arquivo.replace(".pdf", ""))
-        canvas.drawCentredString(doc.pagesize[0] / 2.0, 20, f"Página {doc.page}")
-        # Blindagem: se colaborador não for string limpa
-        canvas.drawRightString(doc.pagesize[0] - 30, 20, f"Autor: {str(colaborador)}")
+        canvas.drawString(20, 15, nome_arquivo.replace(".pdf", ""))
+        canvas.drawCentredString(doc.pagesize[0] / 2.0, 15, f"Página {doc.page}")
+        canvas.drawRightString(doc.pagesize[0] - 20, 15, f"Autor: {str(colaborador)}")
         canvas.restoreState()
         
     template = PageTemplate(id='apr_template', frames=frame, onPage=rodape)
@@ -36,26 +35,19 @@ def criar_pdf_apr(os_num, local, sensores, riscos, colaborador, data_apr, histor
     
     elementos = []
     estilos = getSampleStyleSheet()
-    estilo_titulo = ParagraphStyle('Titulo', parent=estilos['Title'], textColor=colors.HexColor("#000080"), fontSize=18)
-    estilo_normal = estilos['Normal']
-    estilo_normal.alignment = 4
+    estilo_titulo = ParagraphStyle('Titulo', parent=estilos['Title'], textColor=colors.HexColor("#000080"), fontSize=16)
+    
+    # Estilo miniatura para caber na tabela de 14 colunas
+    estilo_tabela_txt = ParagraphStyle('TabTxt', parent=estilos['Normal'], fontSize=7, leading=8, alignment=4)
     estilo_bold = ParagraphStyle('Bold', parent=estilos['Normal'], fontName='Helvetica-Bold')
 
-    # Capa
+    # --- CAPA ---
     elementos.append(Paragraph("<b>ANÁLISE PRELIMINAR DE RISCO (APR)</b>", estilo_titulo))
-    elementos.append(Spacer(1, 15))
+    elementos.append(Spacer(1, 10))
     info_texto = f"<b>Data:</b> {data_apr} &nbsp;&nbsp;&nbsp; <b>OS:</b> {os_num} &nbsp;&nbsp;&nbsp; <b>Local:</b> {local}<br/><b>Sensores/Operações:</b> {', '.join(sensores)}"
     elementos.append(Paragraph(info_texto, estilo_bold))
-    elementos.append(Spacer(1, 15))
+    elementos.append(Spacer(1, 10))
     
-    desc_texto = """A Análise Preliminar de Risco (APR) é um documento diretor de planeamento e segurança, elaborado com antecedência, 
-    que visa identificar, avaliar e estabelecer medidas de mitigação para os perigos operacionais, logísticos e ambientais da campanha. 
-    Este documento é mandatório e norteia todas as intervenções a bordo da embarcação, operações de cais e manuseamento de sensores."""
-    elementos.append(Paragraph(desc_texto, estilo_normal))
-    elementos.append(Spacer(1, 15))
-    
-    elementos.append(Paragraph("<b>Matriz de Classificação de Riscos (Severidade x Probabilidade):</b>", estilo_bold))
-    elementos.append(Spacer(1, 5))
     matriz_dados = [
         ["Sev \\ Prob", "1. Rara", "2. Baixa", "3. Possível", "4. Alta", "5. Frequente"],
         ["5. Crítica", "5", "10", "15", "20", "25"],
@@ -79,13 +71,10 @@ def criar_pdf_apr(os_num, local, sensores, riscos, colaborador, data_apr, histor
             estilo_matriz.add('BACKGROUND', (col_idx, row_idx), (col_idx, row_idx), get_cor_risco(matriz_dados[row_idx][col_idx]))
     tabela_matriz.setStyle(estilo_matriz)
     elementos.append(tabela_matriz)
-    elementos.append(Spacer(1, 20))
+    elementos.append(Spacer(1, 15))
     
-    elementos.append(Paragraph("<b>Histórico de Revisões:</b>", estilo_bold))
-    elementos.append(Spacer(1, 5))
     dados_rev = [["Rev.", "Data", "Autor", "Descrição da Alteração"]]
     for rev in historico_rev:
-        # Blindagem contra campos nulos
         dados_rev.append([str(rev.get('Rev','')), str(rev.get('Data','')), str(rev.get('Autor','')), str(rev.get('Descrição',''))])
     
     tabela_rev = Table(dados_rev, colWidths=[40, 80, 150, 400])
@@ -99,43 +88,80 @@ def criar_pdf_apr(os_num, local, sensores, riscos, colaborador, data_apr, histor
     elementos.append(tabela_rev)
     elementos.append(PageBreak())
 
-    # Tabela de Riscos
-    dados_tabela_riscos = [["ID", "Fase", "Tarefa / Perigo", "Medidas de Mitigação Obrigatórias", "Risco\nInicial", "Risco\nResidual"]]
+    # --- TABELA DE 14 COLUNAS (FORMATO IMAGEM) ---
+    cabecalho_linha1 = [
+        "Nº", "Disciplina", 
+        "Identificação dos Riscos", "", "", 
+        "Nível Inicial", "", "", 
+        "Mitigação dos Riscos", "", "", 
+        "Nível Residual", "", ""
+    ]
+    cabecalho_linha2 = [
+        "", "", 
+        "Processo / Tarefa", "Perigo / Situações", "Consequências", 
+        "Sev", "Prob", "Nív", 
+        "Medidas de Controle", "Controle Adicional", "Responsável", 
+        "Sev", "Prob", "Nív"
+    ]
+    
+    dados_tabela_riscos = [cabecalho_linha1, cabecalho_linha2]
+
     for r in riscos:
-        # Blindagem: Limpeza de textos para evitar erros no ReportLab
         tarefa_limpa = str(r.get('tarefa', '')).replace('<','').replace('>','')
         perigo_limpo = str(r.get('perigo', '')).replace('<','').replace('>','')
         cons_limpo = str(r.get('consequencias', '')).replace('<','').replace('>','')
         mitig_limpo = str(r.get('mitigacao', {}).get('medidas_padrao', '')).replace('<','').replace('>','')
-        
-        perigo_txt = Paragraph(f"<b>{tarefa_limpa}</b><br/><u>Perigo:</u> {perigo_limpo}<br/><u>Consequências:</u> {cons_limpo}", estilo_normal)
-        mitigacao_txt = Paragraph(mitig_limpo, estilo_normal)
-        nome_fase = str(r.get('categoria_fase', 'Geral')).split(' - ')[-1][:15] + "." 
+        adic_limpo = str(r.get('mitigacao', {}).get('controle_adicional', 'N/A')).replace('<','').replace('>','')
+        resp_limpo = str(r.get('mitigacao', {}).get('responsavel', 'Equipe')).replace('<','').replace('>','')
+        nome_fase = str(r.get('categoria_fase', 'Geral')).split(' - ')[-1][:12] + "." 
         
         linha = [
-            str(r.get('id', '-')),
-            nome_fase,
-            perigo_txt,
-            mitigacao_txt,
+            Paragraph(str(r.get('id', '-')), estilo_tabela_txt),
+            Paragraph(nome_fase, estilo_tabela_txt),
+            Paragraph(tarefa_limpa, estilo_tabela_txt),
+            Paragraph(perigo_limpo, estilo_tabela_txt),
+            Paragraph(cons_limpo, estilo_tabela_txt),
+            str(r.get('risco_inicial', {}).get('severidade', '0')),
+            str(r.get('risco_inicial', {}).get('probabilidade', '0')),
             str(r.get('risco_inicial', {}).get('nivel', '0')),
+            Paragraph(mitig_limpo, estilo_tabela_txt),
+            Paragraph(adic_limpo, estilo_tabela_txt),
+            Paragraph(resp_limpo, estilo_tabela_txt),
+            str(r.get('risco_residual', {}).get('severidade', '0')),
+            str(r.get('risco_residual', {}).get('probabilidade', '0')),
             str(r.get('risco_residual', {}).get('nivel', '0'))
         ]
         dados_tabela_riscos.append(linha)
 
-    tabela_riscos = Table(dados_tabela_riscos, colWidths=[35, 70, 250, 315, 50, 50])
+    # Larguras otimizadas para 800 pontos (A4 Paisagem com margem 20)
+    larguras = [20, 35, 75, 100, 85, 20, 25, 25, 160, 60, 60, 20, 25, 25]
+    tabela_riscos = Table(dados_tabela_riscos, colWidths=larguras, repeatRows=2)
+    
     estilo_tabela_riscos = TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#000080")), 
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
+        # Mesclagem Linha 1 (SPAN)
+        ('SPAN', (0,0), (0,1)), # Nº Risco
+        ('SPAN', (1,0), (1,1)), # Disciplina
+        ('SPAN', (2,0), (4,0)), # Identificação
+        ('SPAN', (5,0), (7,0)), # Nivel Inicial
+        ('SPAN', (8,0), (10,0)), # Mitigação
+        ('SPAN', (11,0), (13,0)), # Nivel Residual
+        
+        # Cores Cabeçalho
+        ('BACKGROUND', (0, 0), (-1, 1), colors.HexColor("#000080")), 
+        ('TEXTCOLOR', (0, 0), (-1, 1), colors.white),
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('BOTTOMPADDING', (0, 0), (-1, 0), 8),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ('FONTSIZE', (0, 0), (-1, 1), 7),
+        ('FONTNAME', (0, 0), (-1, 1), 'Helvetica-Bold'),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
+        ('TOPPADDING', (0,0), (-1,-1), 2),
     ])
     
-    for i in range(1, len(dados_tabela_riscos)):
-        estilo_tabela_riscos.add('BACKGROUND', (4, i), (4, i), get_cor_risco(dados_tabela_riscos[i][4]))
-        estilo_tabela_riscos.add('BACKGROUND', (5, i), (5, i), get_cor_risco(dados_tabela_riscos[i][5]))
+    # Colorir células de Nível Inicial (coluna 7) e Residual (coluna 13) dinamicamente
+    for i in range(2, len(dados_tabela_riscos)):
+        estilo_tabela_riscos.add('BACKGROUND', (7, i), (7, i), get_cor_risco(dados_tabela_riscos[i][7]))
+        estilo_tabela_riscos.add('BACKGROUND', (13, i), (13, i), get_cor_risco(dados_tabela_riscos[i][13]))
 
     tabela_riscos.setStyle(estilo_tabela_riscos)
     elementos.append(tabela_riscos)
