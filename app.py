@@ -47,7 +47,7 @@ historico_padrao = pd.DataFrame([
 ])
 historico_df = st.sidebar.data_editor(historico_padrao, num_rows="dynamic", use_container_width=True)
 
-# --- LÓGICA DE SEPARAÇÃO POR EQUIPAMENTO ---
+# --- LÓGICA DE SEPARAÇÃO ---
 riscos_gerais = []
 riscos_especificos = {}
 
@@ -56,15 +56,12 @@ for r in riscos_db:
     if "Geral" in tags:
         riscos_gerais.append(r)
     else:
-        # Se for específico, cria uma cópia dedicada para cada sensor selecionado
         for s in selecao_sensores:
             if s in tags:
                 r_copy = copy.deepcopy(r)
                 r_copy['tarefa'] = f"[{s}] {r['tarefa']}"
                 r_copy['id_unique'] = f"{r['id']}-{s}"
-                
-                if s not in riscos_especificos:
-                    riscos_especificos[s] = []
+                if s not in riscos_especificos: riscos_especificos[s] = []
                 riscos_especificos[s].append(r_copy)
 
 # --- ÁREA PRINCIPAL ---
@@ -74,11 +71,8 @@ if os_num and local and colaborador and selecao_sensores:
     st.success(f"**Gestão Ativa:** {colaborador} | **OS:** {os_num} | **Local:** {local}")
     
     st.markdown("### Seleção e Exclusão de Riscos Mapeados")
-    st.write("Desmarque a caixa dos riscos que **não se aplicam**. Os desmarcados não entrarão no PDF final.")
-    
     riscos_selecionados_para_pdf = []
     
-    # 1. Riscos Gerais da Operação
     st.subheader("🌐 Riscos Gerais (Aplicáveis a toda a operação)")
     fases_gerais = sorted(list(set([r['categoria_fase'] for r in riscos_gerais])))
     for fase in fases_gerais:
@@ -87,9 +81,7 @@ if os_num and local and colaborador and selecao_sensores:
                 incluir = st.checkbox(f"**{risco['id']} - {risco['tarefa']}** (Nível Inicial {risco['risco_inicial']['nivel']})", value=True, key=f"chk_geral_{risco['id']}")
                 if incluir:
                     riscos_selecionados_para_pdf.append(risco)
-                    st.caption(f"**Perigo:** {risco['perigo']} | **Mitigação:** {risco['mitigacao']['medidas_padrao']}")
 
-    # 2. Riscos Específicos Separados por Sensor
     if riscos_especificos:
         st.subheader("⚙️ Riscos Específicos por Equipamento")
         for sensor in selecao_sensores:
@@ -99,23 +91,31 @@ if os_num and local and colaborador and selecao_sensores:
                         incluir = st.checkbox(f"**{risco['id']} - {risco['tarefa']}** (Nível Inicial {risco['risco_inicial']['nivel']})", value=True, key=f"chk_esp_{risco['id_unique']}")
                         if incluir:
                             riscos_selecionados_para_pdf.append(risco)
-                            st.caption(f"**Perigo:** {risco['perigo']} | **Mitigação:** {risco['mitigacao']['medidas_padrao']}")
 
     st.divider()
 
-    # --- ADICIONAR RISCO CUSTOMIZADO ---
+    # --- ADICIONAR RISCO COM MATEMÁTICA ---
     st.subheader("Adicionar Risco Específico do Local")
-    with st.expander("➕ Clique aqui para adicionar um risco que não está no banco"):
+    with st.expander("➕ Adicionar risco não mapeado"):
         with st.form("form_novo_risco", clear_on_submit=True):
             fase_custom = st.selectbox("Fase", ["1 - Preparação e Onshore", "2 - Mobilização", "3 - Operação", "4 - Desmobilização"])
-            tarefa_c = st.text_input("Tarefa / Processo (Ex: [USV] Navegação Costeira)")
+            tarefa_c = st.text_input("Tarefa / Processo")
             perigo_c = st.text_area("Perigo Identificado")
             cons_c = st.text_input("Possíveis Consequências")
-            mit_c = st.text_area("Medidas de Mitigação")
             
-            col_c1, col_c2 = st.columns(2)
-            niv_ini_c = col_c1.number_input("Nível Inicial (1 a 25)", min_value=1, max_value=25, value=15)
-            niv_res_c = col_c2.number_input("Nível Residual (1 a 25)", min_value=1, max_value=25, value=4)
+            st.markdown("##### Avaliação Inicial")
+            col1, col2 = st.columns(2)
+            sev_i = col1.number_input("Severidade Inicial (1-5)", 1, 5, 3)
+            prob_i = col2.number_input("Probabilidade Inicial (1-5)", 1, 5, 3)
+            
+            mit_c = st.text_area("Medidas de Controle")
+            adic_c = st.text_input("Projeto de Controle Adicional", value="N/A")
+            resp_c = st.text_input("Responsável", value="Equipe")
+            
+            st.markdown("##### Avaliação Residual")
+            col3, col4 = st.columns(2)
+            sev_r = col3.number_input("Severidade Residual (1-5)", 1, 5, 1)
+            prob_r = col4.number_input("Probabilidade Residual (1-5)", 1, 5, 1)
             
             if st.form_submit_button("Salvar Novo Risco"):
                 if tarefa_c and perigo_c and mit_c:
@@ -125,34 +125,29 @@ if os_num and local and colaborador and selecao_sensores:
                         "tarefa": tarefa_c,
                         "perigo": perigo_c,
                         "consequencias": cons_c,
-                        "risco_inicial": {"severidade": 0, "probabilidade": 0, "nivel": niv_ini_c},
-                        "mitigacao": {"medidas_padrao": mit_c, "responsavel": "Equipa"},
-                        "risco_residual": {"severidade": 0, "probabilidade": 0, "nivel": niv_res_c},
+                        "risco_inicial": {"severidade": sev_i, "probabilidade": prob_i, "nivel": sev_i * prob_i},
+                        "mitigacao": {"medidas_padrao": mit_c, "controle_adicional": adic_c, "responsavel": resp_c},
+                        "risco_residual": {"severidade": sev_r, "probabilidade": prob_r, "nivel": sev_r * prob_r},
                         "sensores_aplicaveis": ["Geral"]
                     }
                     st.session_state.riscos_customizados.append(novo_risco)
-                    st.success("Risco adicionado com sucesso à APR!")
-                else:
-                    st.error("Preencha Tarefa, Perigo e Mitigação para salvar.")
+                    st.success("Risco adicionado!")
                     
     if st.session_state.riscos_customizados:
-        st.write("**Riscos Específicos Adicionados Manualmente:**")
         for rc in st.session_state.riscos_customizados:
-            st.warning(f"{rc['id']} - {rc['tarefa']} (Nível: {rc['risco_inicial']['nivel']})")
             riscos_selecionados_para_pdf.append(rc)
             
     st.divider()
     
-    # --- GERADOR DE PDF ---
     st.subheader("Finalizar Documentação")
     if st.button("📄 Gerar Relatório PDF da APR", use_container_width=True):
-        with st.spinner("Compilando a matriz Ouro..."):
+        with st.spinner("Desenhando Matriz de 14 colunas..."):
             historico_dict = historico_df.to_dict('records')
             try:
                 arquivo_gerado = criar_pdf_apr(os_num, local, selecao_sensores, riscos_selecionados_para_pdf, colaborador, data_apr.strftime('%d/%m/%Y'), historico_dict)
                 with open(arquivo_gerado, "rb") as pdf_file:
                     st.download_button("📥 Baixar PDF Finalizado", data=pdf_file.read(), file_name=arquivo_gerado, mime='application/octet-stream', type="primary")
             except Exception as e:
-                st.error(f"Erro ao gerar o PDF. Detalhe técnico: {e}")
+                st.error(f"Erro: {e}")
 else:
-    st.info("👈 Preencha todos os dados básicos e selecione pelo menos um sensor na barra lateral para carregar a matriz.")
+    st.info("👈 Preencha os dados básicos na barra lateral.")
