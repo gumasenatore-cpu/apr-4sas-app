@@ -1,0 +1,458 @@
+[
+    {
+        "id": "1.1",
+        "categoria_fase": "1 - Mobilização / Desmobilização",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Planejamento (Pessoas)",
+        "consequencias": "Pessoal: Inapto fisicamente para o trabalho. Sem certificação / não qualificado profissionalmente. Equipe insuficiente. Não familirizado com equipamento.",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 5,
+            "nivel": 3.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "15.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 5,
+            "nivel": 1.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "1.2",
+        "categoria_fase": "1 - Mobilização / Desmobilização",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Planejamento (Equipamentos)",
+        "consequencias": "Falha na identificação dos requisitos de equipamento. Falta de licenças e autorizações quando necessário. Certificados de conformidade e/ou calibração expirados. Atraso no fornecimento de equipamentos terceiros para mobilização.",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 3,
+            "nivel": 3.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "9.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 3,
+            "nivel": 1.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "1.4",
+        "categoria_fase": "1 - Mobilização / Desmobilização",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Viagens longas",
+        "consequencias": "Fadiga",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 2,
+            "nivel": 3.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "6.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 2,
+            "nivel": 1.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "1.5",
+        "categoria_fase": "1 - Mobilização / Desmobilização",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Preparação de equipamento e pessoal para logística de navegação do USV",
+        "consequencias": "Perda e dano do equipamento. Problemas com terceiros como embarcações e petrechos de pesca. Distância de pessoal para resgate de equipamento.",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 3.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "12.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 1.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "2.1",
+        "categoria_fase": "2 - Operação",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Condições climáticas",
+        "consequencias": "Danos ao USV",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 4.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "16.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 3,
+            "nivel": 3.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "2.2",
+        "categoria_fase": "2 - Operação",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Navegação com barcos de apoio, USV 4SAS e atividades de levantamento de dados",
+        "consequencias": "Colisão com barcos e estruturas fixas.",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 5,
+            "nivel": 3.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "15.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 2.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "2.3",
+        "categoria_fase": "2 - Operação",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Navegação com barcos de apoio, USV 4SAS e atividades de levantamento de dados",
+        "consequencias": "Falha elétrica/mecânica (equipamento)",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 5,
+            "nivel": 3.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "15.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 2.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "2.5",
+        "categoria_fase": "2 - Operação",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Operação de levantamento de dados com Multibean na gondola",
+        "consequencias": "Qualidade do dado",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 5,
+            "nivel": 3.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "15.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 2.0
+        },
+        "sensores_aplicaveis": [
+            "MBES"
+        ]
+    },
+    {
+        "id": "2.6",
+        "categoria_fase": "2 - Operação",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Operação de levantamento de doados com GNSS no marstro do USV 4SAS",
+        "consequencias": "Qualidade do dado",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 3.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "12.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 2.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "2.7",
+        "categoria_fase": "2 - Operação",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Levantamento de dados com INS na gondola",
+        "consequencias": "Qualidade do dado",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 5,
+            "nivel": 3.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "15.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 2.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "2.8",
+        "categoria_fase": "2 - Operação",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Levantamento de dados com SVP no USV 4SAS",
+        "consequencias": "Qualidade do dado",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 3.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "12.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 2.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "2.10",
+        "categoria_fase": "2 - Operação",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Perda de comunicação entre o USV 4SAS e Sala de controle em terra",
+        "consequencias": "Perda de atiualização da posição do USV",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 3,
+            "nivel": 4.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "12.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 3,
+            "nivel": 2.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "2.10",
+        "categoria_fase": "2 - Operação",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Apagão, perda total de comunicação com USV 4SAS",
+        "consequencias": "Perda de comunicação com veículo",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 3.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "12.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 2,
+            "nivel": 3.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "3.3",
+        "categoria_fase": "3 - Manutenção",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Manutenção da máquina (motor)",
+        "consequencias": "Vazamento de óleo",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 2.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "8.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 2,
+            "nivel": 1.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "3.4",
+        "categoria_fase": "3 - Manutenção",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Manutenção de equipamentos (mastro)",
+        "consequencias": "Falha de equipamento",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 2.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "8.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 2,
+            "nivel": 1.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "3.5",
+        "categoria_fase": "3 - Manutenção",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Manutenção da gondola",
+        "consequencias": "Falha de equipamento",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 2.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "8.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 2,
+            "nivel": 1.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "4.1",
+        "categoria_fase": "4 - Reboque de Emergência",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Arranjo para reboque de emergência",
+        "consequencias": "Falta de preparo da equipe. Falta de equipmaento necessário",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 5,
+            "nivel": 2.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "10.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 2,
+            "nivel": 2.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "4.2",
+        "categoria_fase": "4 - Reboque de Emergência",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Navegar rebocando o USV 4SAS",
+        "consequencias": "Falta de preparo da equipe. Falta de equipmaento necessário",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 2.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "8.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 2,
+            "nivel": 2.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    },
+    {
+        "id": "5.1",
+        "categoria_fase": "5 - Incidentes com Petrechos de Pesca",
+        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
+        "perigo": "Colisão, arrasto e incidentes com pretechos de pesca",
+        "consequencias": "Eventos inesperados durante a aquisição de dados.",
+        "risco_inicial": {
+            "severidade": 0,
+            "probabilidade": 4,
+            "nivel": 3.0
+        },
+        "mitigacao": {
+            "medidas_padrao": "12.0",
+            "responsavel": ""
+        },
+        "risco_residual": {
+            "severidade": 0,
+            "probabilidade": 3,
+            "nivel": 1.0
+        },
+        "sensores_aplicaveis": [
+            "Geral"
+        ]
+    }
+]
