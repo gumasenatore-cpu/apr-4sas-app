@@ -1,23 +1,23 @@
 [
     {
         "id": "1.1",
-        "categoria_fase": "1 - Mobilização / Desmobilização",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Planejamento (Pessoas)",
-        "consequencias": "Pessoal: Inapto fisicamente para o trabalho. Sem certificação / não qualificado profissionalmente. Equipe insuficiente. Não familirizado com equipamento.",
+        "categoria_fase": "1 - Preparação",
+        "tarefa": "Gestão de Pessoas e Documentação",
+        "perigo": "Equipa não treinada, falta de certificações obrigatórias (CBSP, HUET, ASO, NRs) ou documentos pessoais faltantes.",
+        "consequencias": "Impedimento de embarque, atraso no projeto, acidentes por imperícia.",
         "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 5,
-            "nivel": 3.0
+            "severidade": 4,
+            "probabilidade": 3,
+            "nivel": 12
         },
         "mitigacao": {
-            "medidas_padrao": "15.0",
-            "responsavel": ""
+            "medidas_padrao": "Matriz de treino validada 15 dias antes. Verificação rigorosa de validade de todos os exames médicos (ASO) e certificados (NRs).",
+            "responsavel": "RH / HSE"
         },
         "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 5,
-            "nivel": 1.0
+            "severidade": 4,
+            "probabilidade": 1,
+            "nivel": 4
         },
         "sensores_aplicaveis": [
             "Geral"
@@ -25,95 +25,80 @@
     },
     {
         "id": "1.2",
-        "categoria_fase": "1 - Mobilização / Desmobilização",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Planejamento (Equipamentos)",
-        "consequencias": "Falha na identificação dos requisitos de equipamento. Falta de licenças e autorizações quando necessário. Certificados de conformidade e/ou calibração expirados. Atraso no fornecimento de equipamentos terceiros para mobilização.",
+        "categoria_fase": "1 - Preparação",
+        "tarefa": "Logística e Suporte à Vida",
+        "perigo": "Falha na logística para mobilização de pessoas (reservas de aéreo, terrestre, hospedagem e alimentação). Falta de consumíveis.",
+        "consequencias": "Equipa fadigada antes do início da operação, falta de mantimentos a bordo, atrasos críticos.",
         "risco_inicial": {
-            "severidade": 0,
+            "severidade": 3,
             "probabilidade": 3,
-            "nivel": 3.0
+            "nivel": 9
         },
         "mitigacao": {
-            "medidas_padrao": "9.0",
-            "responsavel": ""
+            "medidas_padrao": "Reservas (voos, hotéis, transferes) confirmadas com antecedência. Lista de consumíveis validada e comprada. Plano alimentar alinhado com a embarcação.",
+            "responsavel": "Logística"
         },
         "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 3,
-            "nivel": 1.0
+            "severidade": 3,
+            "probabilidade": 1,
+            "nivel": 3
         },
         "sensores_aplicaveis": [
             "Geral"
         ]
     },
     {
-        "id": "1.4",
-        "categoria_fase": "1 - Mobilização / Desmobilização",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Viagens longas",
-        "consequencias": "Fadiga",
+        "id": "1.3",
+        "categoria_fase": "1 - Preparação",
+        "tarefa": "Planeamento Técnico da Survey",
+        "perigo": "Falta ou atraso no planeamento das linhas de navegação, pontos de amostragem e planos de contingência. Equipamento indisponível.",
+        "consequencias": "Levantamento cego, perda de tempo de embarcação (downtime), dados fora da especificação do cliente.",
         "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 2,
-            "nivel": 3.0
+            "severidade": 4,
+            "probabilidade": 4,
+            "nivel": 16
         },
         "mitigacao": {
-            "medidas_padrao": "6.0",
-            "responsavel": ""
+            "medidas_padrao": "Arquivos de navegação (linhas/pontos) criados, revistos e aprovados previamente. Equipamentos testados em bancada e calibrações verificadas.",
+            "responsavel": "Party Chief / Geofísico"
         },
         "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 2,
-            "nivel": 1.0
+            "severidade": 4,
+            "probabilidade": 1,
+            "nivel": 4
         },
         "sensores_aplicaveis": [
-            "Geral"
-        ]
-    },
-    {
-        "id": "1.5",
-        "categoria_fase": "1 - Mobilização / Desmobilização",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Preparação de equipamento e pessoal para logística de navegação do USV",
-        "consequencias": "Perda e dano do equipamento. Problemas com terceiros como embarcações e petrechos de pesca. Distância de pessoal para resgate de equipamento.",
-        "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 3.0
-        },
-        "mitigacao": {
-            "medidas_padrao": "12.0",
-            "responsavel": ""
-        },
-        "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 1.0
-        },
-        "sensores_aplicaveis": [
-            "Geral"
+            "Geral",
+            "SBES",
+            "MBES",
+            "SSS",
+            "MAG",
+            "SBP",
+            "Sísmica Monocanal",
+            "Sísmica Multicanal",
+            "Vibro Core",
+            "Jet Probe"
         ]
     },
     {
         "id": "2.1",
-        "categoria_fase": "2 - Operação",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Condições climáticas",
-        "consequencias": "Danos ao USV",
+        "categoria_fase": "2 - Mobilização",
+        "tarefa": "Logística de Transporte Portuário",
+        "perigo": "Transporte de materiais e equipamentos inadequado. Falta de organização no local de mobilização (cais/porto).",
+        "consequencias": "Danos aos equipamentos sensíveis, acidentes de trânsito, atropelamento no porto, caos logístico.",
         "risco_inicial": {
-            "severidade": 0,
+            "severidade": 4,
             "probabilidade": 4,
-            "nivel": 4.0
+            "nivel": 16
         },
         "mitigacao": {
-            "medidas_padrao": "16.0",
-            "responsavel": ""
+            "medidas_padrao": "Transportadoras homologadas. Acesso ao porto coordenado previamente. Isolamento da área de descarga no cais.",
+            "responsavel": "Logística / HSE"
         },
         "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 3,
-            "nivel": 3.0
+            "severidade": 3,
+            "probabilidade": 2,
+            "nivel": 6
         },
         "sensores_aplicaveis": [
             "Geral"
@@ -121,191 +106,74 @@
     },
     {
         "id": "2.2",
-        "categoria_fase": "2 - Operação",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Navegação com barcos de apoio, USV 4SAS e atividades de levantamento de dados",
-        "consequencias": "Colisão com barcos e estruturas fixas.",
+        "categoria_fase": "2 - Mobilização",
+        "tarefa": "Operação de Içamento (Lifting)",
+        "perigo": "Falta de requisitos mínimos para içamento de cargas para a embarcação. Uso de cintas danificadas ou sem certificação.",
+        "consequencias": "Queda de carga, esmagamento, danos severos à embarcação ou perda de equipamentos.",
         "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 5,
-            "nivel": 3.0
+            "severidade": 5,
+            "probabilidade": 4,
+            "nivel": 20
         },
         "mitigacao": {
-            "medidas_padrao": "15.0",
-            "responsavel": ""
+            "medidas_padrao": "Plano de Rigging aprovado. Inspeção visual de lingas/manilhas. Isolamento da área (ninguém sob a carga). Uso de cabos guia (tag lines).",
+            "responsavel": "Contramestre / Rigger"
         },
         "risco_residual": {
-            "severidade": 0,
+            "severidade": 5,
+            "probabilidade": 1,
+            "nivel": 5
+        },
+        "sensores_aplicaveis": [
+            "Geral",
+            "Vibro Core",
+            "Jet Probe",
+            "Sísmica Multicanal"
+        ]
+    },
+    {
+        "id": "3.1",
+        "categoria_fase": "3 - Operação",
+        "tarefa": "Previsão Metaoceanográfica",
+        "perigo": "Falta de planeamento e análise de previsão metaoceanográfica contínua.",
+        "consequencias": "Embarcação apanhada em tempestade, danos aos equipamentos, homem ao mar, aborto emergencial da missão.",
+        "risco_inicial": {
+            "severidade": 5,
             "probabilidade": 4,
-            "nivel": 2.0
+            "nivel": 20
+        },
+        "mitigacao": {
+            "medidas_padrao": "Acompanhamento diário da previsão do tempo (vento, ondulação, correntes). Respeitar os limites operacionais da embarcação e dos sensores. Autoridade de paragem de trabalho (Stop Work) clara.",
+            "responsavel": "Comandante / Party Chief"
+        },
+        "risco_residual": {
+            "severidade": 4,
+            "probabilidade": 1,
+            "nivel": 4
         },
         "sensores_aplicaveis": [
             "Geral"
         ]
     },
     {
-        "id": "2.3",
-        "categoria_fase": "2 - Operação",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Navegação com barcos de apoio, USV 4SAS e atividades de levantamento de dados",
-        "consequencias": "Falha elétrica/mecânica (equipamento)",
+        "id": "3.2",
+        "categoria_fase": "3 - Operação",
+        "tarefa": "Garantia de Qualidade (QA/QC) e Dados",
+        "perigo": "Falta de registo de log operacional. Falha no armazenamento de dados (HDs) e falha de comunicação (satélite/rádio).",
+        "consequencias": "Perda irrecuperável dos dados adquiridos, necessidade de refazer o levantamento (re-shoot), descoordenação.",
         "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 5,
-            "nivel": 3.0
-        },
-        "mitigacao": {
-            "medidas_padrao": "15.0",
-            "responsavel": ""
-        },
-        "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 2.0
-        },
-        "sensores_aplicaveis": [
-            "Geral"
-        ]
-    },
-    {
-        "id": "2.5",
-        "categoria_fase": "2 - Operação",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Operação de levantamento de dados com Multibean na gondola",
-        "consequencias": "Qualidade do dado",
-        "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 5,
-            "nivel": 3.0
-        },
-        "mitigacao": {
-            "medidas_padrao": "15.0",
-            "responsavel": ""
-        },
-        "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 2.0
-        },
-        "sensores_aplicaveis": [
-            "MBES"
-        ]
-    },
-    {
-        "id": "2.6",
-        "categoria_fase": "2 - Operação",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Operação de levantamento de doados com GNSS no marstro do USV 4SAS",
-        "consequencias": "Qualidade do dado",
-        "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 3.0
-        },
-        "mitigacao": {
-            "medidas_padrao": "12.0",
-            "responsavel": ""
-        },
-        "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 2.0
-        },
-        "sensores_aplicaveis": [
-            "Geral"
-        ]
-    },
-    {
-        "id": "2.7",
-        "categoria_fase": "2 - Operação",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Levantamento de dados com INS na gondola",
-        "consequencias": "Qualidade do dado",
-        "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 5,
-            "nivel": 3.0
-        },
-        "mitigacao": {
-            "medidas_padrao": "15.0",
-            "responsavel": ""
-        },
-        "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 2.0
-        },
-        "sensores_aplicaveis": [
-            "Geral"
-        ]
-    },
-    {
-        "id": "2.8",
-        "categoria_fase": "2 - Operação",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Levantamento de dados com SVP no USV 4SAS",
-        "consequencias": "Qualidade do dado",
-        "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 3.0
-        },
-        "mitigacao": {
-            "medidas_padrao": "12.0",
-            "responsavel": ""
-        },
-        "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 2.0
-        },
-        "sensores_aplicaveis": [
-            "Geral"
-        ]
-    },
-    {
-        "id": "2.10",
-        "categoria_fase": "2 - Operação",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Perda de comunicação entre o USV 4SAS e Sala de controle em terra",
-        "consequencias": "Perda de atiualização da posição do USV",
-        "risco_inicial": {
-            "severidade": 0,
+            "severidade": 4,
             "probabilidade": 3,
-            "nivel": 4.0
+            "nivel": 12
         },
         "mitigacao": {
-            "medidas_padrao": "12.0",
-            "responsavel": ""
+            "medidas_padrao": "Diários de bordo e logs preenchidos em cada turno. Rotina de backups duplos (Redundância de HDs) implementada. Teste diário dos sistemas de rádio e internet satélite.",
+            "responsavel": "Processador / Party Chief"
         },
         "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 3,
-            "nivel": 2.0
-        },
-        "sensores_aplicaveis": [
-            "Geral"
-        ]
-    },
-    {
-        "id": "2.10",
-        "categoria_fase": "2 - Operação",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Apagão, perda total de comunicação com USV 4SAS",
-        "consequencias": "Perda de comunicação com veículo",
-        "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 3.0
-        },
-        "mitigacao": {
-            "medidas_padrao": "12.0",
-            "responsavel": ""
-        },
-        "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 2,
-            "nivel": 3.0
+            "severidade": 2,
+            "probabilidade": 1,
+            "nivel": 2
         },
         "sensores_aplicaveis": [
             "Geral"
@@ -313,23 +181,23 @@
     },
     {
         "id": "3.3",
-        "categoria_fase": "3 - Manutenção",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Manutenção da máquina (motor)",
-        "consequencias": "Vazamento de óleo",
+        "categoria_fase": "3 - Operação",
+        "tarefa": "Integridade da Embarcação e Equipamentos",
+        "perigo": "Falha crítica na embarcação (motor, geradores, hidráulica) ou falha de alimentação do equipamento de survey.",
+        "consequencias": "Embarcação à deriva, blackout, interrupção total do projeto, risco de colisão.",
         "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 2.0
+            "severidade": 5,
+            "probabilidade": 3,
+            "nivel": 15
         },
         "mitigacao": {
-            "medidas_padrao": "8.0",
-            "responsavel": ""
+            "medidas_padrao": "Manutenção preventiva da embarcação em dia. Verificação de geradores auxiliares (UPS) para os equipamentos de survey. Peças de reposição críticas a bordo.",
+            "responsavel": "Comandante / Chefe de Máquinas"
         },
         "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 2,
-            "nivel": 1.0
+            "severidade": 4,
+            "probabilidade": 1,
+            "nivel": 4
         },
         "sensores_aplicaveis": [
             "Geral"
@@ -337,122 +205,136 @@
     },
     {
         "id": "3.4",
-        "categoria_fase": "3 - Manutenção",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Manutenção de equipamentos (mastro)",
-        "consequencias": "Falha de equipamento",
+        "categoria_fase": "3 - Operação",
+        "tarefa": "Sensores Acústicos e de Posicionamento (MBES/SBES)",
+        "perigo": "Instalação e operação de haste (pole) no costado da embarcação. Riscos de vibração e fixação.",
+        "consequencias": "Quebra da haste, perda do sensor no mar, dados ruidosos, acidentes na instalação.",
         "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 2.0
+            "severidade": 4,
+            "probabilidade": 3,
+            "nivel": 12
         },
         "mitigacao": {
-            "medidas_padrao": "8.0",
-            "responsavel": ""
+            "medidas_padrao": "Instalação com a embarcação parada. Uso de cabos de segurança independentes fixando o sensor à embarcação. Calibração (Patch Test) realizada antes do início efetivo.",
+            "responsavel": "Surveyor"
         },
         "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 2,
-            "nivel": 1.0
+            "severidade": 3,
+            "probabilidade": 1,
+            "nivel": 3
         },
         "sensores_aplicaveis": [
-            "Geral"
+            "MBES",
+            "SBES"
         ]
     },
     {
         "id": "3.5",
-        "categoria_fase": "3 - Manutenção",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Manutenção da gondola",
-        "consequencias": "Falha de equipamento",
+        "categoria_fase": "3 - Operação",
+        "tarefa": "Sensores Rebocados (SSS / MAG / SBP)",
+        "perigo": "Tensão extrema no cabo de reboque. Risco do equipamento enroscar no fundo ou nas hélices. Áreas de chicoteamento do cabo (Snap-back).",
+        "consequencias": "Corte ou chicoteamento do cabo causando lesões fatais no convés. Perda de equipamento e danos severos à propulsão.",
         "risco_inicial": {
-            "severidade": 0,
+            "severidade": 5,
             "probabilidade": 4,
-            "nivel": 2.0
+            "nivel": 20
         },
         "mitigacao": {
-            "medidas_padrao": "8.0",
-            "responsavel": ""
+            "medidas_padrao": "Isolamento das áreas de Snap-back no convés. Monitorização contínua da tensão do cabo e altimetria. Comunicação rádio direta entre Operador de Guincho e Passadiço. Lâmina pronta para corte emergencial.",
+            "responsavel": "Operador SSS/MAG / Passadiço"
         },
         "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 2,
-            "nivel": 1.0
+            "severidade": 4,
+            "probabilidade": 1,
+            "nivel": 4
         },
         "sensores_aplicaveis": [
-            "Geral"
+            "SSS",
+            "MAG",
+            "SBP"
+        ]
+    },
+    {
+        "id": "3.6",
+        "categoria_fase": "3 - Operação",
+        "tarefa": "Sísmica (Alta Voltagem e Streamers)",
+        "perigo": "Manuseio de fontes acústicas de alta voltagem (Sparker/Boomer). Operação contínua de guinchos com streamers pesados.",
+        "consequencias": "Eletrocussão, incêndio elétrico, pontos de esmagamento no guincho, poluição marinha por vazamento de fluidos do cabo.",
+        "risco_inicial": {
+            "severidade": 5,
+            "probabilidade": 4,
+            "nivel": 20
+        },
+        "mitigacao": {
+            "medidas_padrao": "Protocolo LOTO rigoroso. Aviso sonoro antes do disparo da fonte acústica (só dispara na água). Roupas justas perto do guincho rotativo. Kit antipoluição (SOPEP) posicionado.",
+            "responsavel": "Geofísico / Operador Sísmica"
+        },
+        "risco_residual": {
+            "severidade": 5,
+            "probabilidade": 1,
+            "nivel": 5
+        },
+        "sensores_aplicaveis": [
+            "Sísmica Monocanal",
+            "Sísmica Multicanal"
+        ]
+    },
+    {
+        "id": "3.7",
+        "categoria_fase": "3 - Operação",
+        "tarefa": "Amostragem Geotécnica Pesada (Vibro Core / Jet Probe)",
+        "perigo": "Içamento de torre pesada em mar aberto (pórtico/A-frame). Sistema de bombeamento de água sob altíssima pressão cruzando o convés.",
+        "consequencias": "Colapso estrutural, esmagamento no convés, chicoteamento violento de mangueiras de alta pressão rompida, injeção de água na pele.",
+        "risco_inicial": {
+            "severidade": 5,
+            "probabilidade": 4,
+            "nivel": 20
+        },
+        "mitigacao": {
+            "medidas_padrao": "Restrição severa de limite de ondulação. Uso de cabos tensores auxiliares (Tugger Winches). Cabos de segurança obrigatórios (Whip Checks) em todas as conexões de mangueiras de pressão. EPI completo com viseira.",
+            "responsavel": "Geólogo / Técnico Jet Probe"
+        },
+        "risco_residual": {
+            "severidade": 4,
+            "probabilidade": 2,
+            "nivel": 8
+        },
+        "sensores_aplicaveis": [
+            "Vibro Core",
+            "Jet Probe"
         ]
     },
     {
         "id": "4.1",
-        "categoria_fase": "4 - Reboque de Emergência",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Arranjo para reboque de emergência",
-        "consequencias": "Falta de preparo da equipe. Falta de equipmaento necessário",
+        "categoria_fase": "4 - Desmobilização",
+        "tarefa": "Conclusão de Projeto e Logística Reversa",
+        "perigo": "Fadiga acumulada após o projeto. Logística reversa inadequada. Falta de organização e pressa no içamento e transporte.",
+        "consequencias": "Acidentes no cais por desatenção, lesões músculo-esqueléticas no transporte manual de carga, acidentes nas estradas durante o regresso.",
         "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 5,
-            "nivel": 2.0
-        },
-        "mitigacao": {
-            "medidas_padrao": "10.0",
-            "responsavel": ""
-        },
-        "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 2,
-            "nivel": 2.0
-        },
-        "sensores_aplicaveis": [
-            "Geral"
-        ]
-    },
-    {
-        "id": "4.2",
-        "categoria_fase": "4 - Reboque de Emergência",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Navegar rebocando o USV 4SAS",
-        "consequencias": "Falta de preparo da equipe. Falta de equipmaento necessário",
-        "risco_inicial": {
-            "severidade": 0,
+            "severidade": 4,
             "probabilidade": 4,
-            "nivel": 2.0
+            "nivel": 16
         },
         "mitigacao": {
-            "medidas_padrao": "8.0",
-            "responsavel": ""
+            "medidas_padrao": "Respeito rigoroso ao limite de horas de trabalho e descanso. Briefing focado em manter o alerta (não relaxar os padrões de segurança). Manutenção dos mesmos procedimentos de Rigging e PTW da mobilização.",
+            "responsavel": "Party Chief / HSE"
         },
         "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 2,
-            "nivel": 2.0
+            "severidade": 3,
+            "probabilidade": 1,
+            "nivel": 3
         },
         "sensores_aplicaveis": [
-            "Geral"
-        ]
-    },
-    {
-        "id": "5.1",
-        "categoria_fase": "5 - Incidentes com Petrechos de Pesca",
-        "tarefa": "Disciplina: Saúde,  Segurança, M.Ambiente, Qualidade.",
-        "perigo": "Colisão, arrasto e incidentes com pretechos de pesca",
-        "consequencias": "Eventos inesperados durante a aquisição de dados.",
-        "risco_inicial": {
-            "severidade": 0,
-            "probabilidade": 4,
-            "nivel": 3.0
-        },
-        "mitigacao": {
-            "medidas_padrao": "12.0",
-            "responsavel": ""
-        },
-        "risco_residual": {
-            "severidade": 0,
-            "probabilidade": 3,
-            "nivel": 1.0
-        },
-        "sensores_aplicaveis": [
-            "Geral"
+            "Geral",
+            "SBES",
+            "MBES",
+            "SSS",
+            "MAG",
+            "SBP",
+            "Sísmica Monocanal",
+            "Sísmica Multicanal",
+            "Vibro Core",
+            "Jet Probe"
         ]
     }
 ]
